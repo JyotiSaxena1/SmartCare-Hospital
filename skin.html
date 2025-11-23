@@ -3,36 +3,7 @@
 <head>
 <title>Skin Disease Detector</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-body{margin:0;font-family:Arial;background:#f4f7fb;}
-header{
-  background:#0b6bb8;color:white;padding:15px;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.back{color:white;text-decoration:none;font-size:16px;}
-.box{
-  width:90%;max-width:600px;margin:35px auto;padding:25px;
-  background:white;border-radius:14px;text-align:center;
-  box-shadow:0 4px 15px rgba(0,0,0,0.07);
-}
-#drop{
-  border:2px dashed #0b6bb8;padding:40px;border-radius:12px;
-  cursor:pointer;margin-bottom:20px;
-}
-.preview-img{
-  width:180px;height:180px;border-radius:10px;
-  object-fit:cover;margin-top:15px;display:none;
-}
-.btn{
-  padding:12px 20px;background:#0b6bb8;color:white;
-  border:none;border-radius:6px;cursor:pointer;margin-top:10px;
-}
-#result{
-  margin-top:20px;padding:15px;background:#eaf4ff;
-  border-radius:10px;display:none;
-}
-</style>
+<link rel="stylesheet" href="css/skin.css">
 </head>
 
 <body>
@@ -55,34 +26,8 @@ header{
   <div id="result"></div>
 </div>
 
-<script>
-let drop = document.getElementById("drop");
-let fileInput = document.getElementById("file");
-let preview = document.getElementById("preview");
 
-drop.onclick = () => fileInput.click();
-drop.ondragover = e => e.preventDefault();
-drop.ondrop = e => {
-  e.preventDefault();
-  fileInput.files = e.dataTransfer.files;
-  showPreview();
-};
-
-fileInput.onchange = showPreview;
-
-function showPreview(){
-  let file = fileInput.files[0];
-  if(!file) return;
-  preview.src = URL.createObjectURL(file);
-  preview.style.display = "block";
-}
-
-function predict(){
-  document.getElementById("result").style.display="block";
-  document.getElementById("result").innerHTML =
-  "<b>Prediction:</b> Eczema Detected<br><br><b>Advice:</b> Apply moisturizer & consult dermatologist.";
-}
-</script>
+<script src="js/skin.js"></script>
 
 </body>
 </html>
